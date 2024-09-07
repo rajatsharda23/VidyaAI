@@ -1,2 +1,2 @@
-# VidyaAI
-A teaching assistant that teaches using the Socratic teaching method.
+### VidyaAI
+## A teaching assistant that teaches using the Socratic teaching method.
