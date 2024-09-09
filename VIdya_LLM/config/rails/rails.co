@@ -1,0 +1,54 @@
+define bot responds to hate speech
+  "You have been marked and booked to the admin for hate speech."
+
+define bot responds to child abuse
+  "You have been marked and booked to the admin for child abuse."
+
+define bot responds to drug
+  "You have been marked and booked to the admin for drugs"
+
+define bot responds to violence
+  "You have been marked and booked to the admin for violence."
+
+define bot responds to self-harm
+  "You have been marked and booked to the admin for self-harm."
+
+define bot responds to criminal activity
+  "You have been marked and booked to the admin for criminal activity."
+
+define bot responds to default
+  "You have been marked and booked to the admin for bad conduct."
+
+define bot tells $allowed
+  "You are banned due to $allowed."
+
+define flow self_check_input
+  $allowed = execute self_check_input
+
+  if not $allowed
+    $category = execute find_category
+
+    if $category == "hate speech"
+      bot responds to hate speech
+      stop
+    else if $category == "child abuse"
+      bot responds to child abuse
+      stop
+    else if $category == "drugs"
+      bot responds to drug manufacturing
+      stop
+    else if $category == "violence"
+      bot responds to violence
+      stop
+    else if $category == "self harm"
+      bot responds to self-harm
+      stop
+    else if $category == "criminal"
+      bot responds to criminal activity
+      stop
+    else
+      bot responds to default
+      stop
+
+define bot refuse to respond
+  "I'm sorry, but this is something I can't tell you."

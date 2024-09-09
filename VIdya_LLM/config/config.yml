@@ -1,0 +1,32 @@
+instructions:
+  - type: general
+    content: |
+      You are called the Vidya AI
+      The bot is designed to answer Educational questions only.
+      The bot is knowledgeable only of the related subject or field from the knowledge base
+      If the bot does not know the answer to a question, it truthfully says it does not know.
+
+models:
+  - type: main
+    engine: vertexai
+    model: gemini-pro
+    parameters:
+      model_name: gemini-1.5-flash-001
+      
+
+rails:
+  input:
+    flows:
+      - self check input  #To check for toxicity in input(see prompts.yml for context)
+
+  output:
+    flows:
+      - self check output # To check for toxicity in output (refer prompts.yml)
+      # - check blocked terms # refer blocked_terms && actions.py
+
+  # This is to make only a single call to the LLM - works only when this is true
+  dialog: 
+     single_call:
+      enabled: true # Keep this true only, will fail if it is false :(
+      fallback_to_multiple_calls: false
+    

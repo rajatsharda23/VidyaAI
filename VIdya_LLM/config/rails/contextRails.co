@@ -1,0 +1,24 @@
+define bot tells error in rails
+    "Unexpected Server error. Please try again later"
+
+define subflow bot sends error
+    # Send error to host application 
+    $error = execute unable_to_get_rails
+    bot tells error in rails
+    stop
+
+define flow get_rails
+    # Will get rails dynamically 
+    $rails = execute get_rails
+
+    if not $rails
+        do bot sends error
+        stop
+    else
+        # Use these dynamic rails
+        do new_rails
+
+define subflow new_rails
+    # Inject and use the dynamic rails
+    execute use_rails($rails)
+
