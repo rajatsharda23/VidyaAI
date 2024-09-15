@@ -1,22 +1,10 @@
-define user asks about course
-    "Do you know about my course?"
-    "Do you know my courseId?"
+define user greeting
+  "Hello"
+  "Hi!"
 
+define bot greeting
+  "Hey, I'm Vidya, your teaching assistant catering to your DSA needs!"
+  
 define flow 
-    user asks about course
-    do get user courseId
-
-define bot tells about course
-  "Your course Id is $course_id"
-
-define bot dont know courseId
-  "There was some error while fetching your details, please try again later!"
-
-define subflow get user courseId
-    $course_id = execute retrieve_courseId
-
-    if not $course_id 
-        bot dont know courseId
-        stop
-    else 
-        bot tells about course
+    user greeting
+    bot greeting

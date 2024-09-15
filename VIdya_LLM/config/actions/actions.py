@@ -12,13 +12,8 @@ from nemoguardrails.actions.actions import ActionResult, action
 from nemoguardrails.actions.llm.utils import llm_call
 from nemoguardrails.context import llm_call_info_var
 from nemoguardrails.llm.params import llm_params
-from nemoguardrails.llm.types import Task
-from nemoguardrails.logging.explain import LLMCallInfo
-from nemoguardrails.colang.runtime import compute_context, compute_next_steps
-
 
 log = logging.getLogger(__name__)
-
 
 @action(is_system_action=True)
 async def check_blocked_terms(context: Optional[dict] = None):
@@ -37,7 +32,7 @@ async def check_blocked_terms(context: Optional[dict] = None):
 
 
 #Find Category Action! Asking the LLM the category the blocked message falls into
-@action(is_system_action=True)
+@action(is_system_action=True, execute_async=True)
 async def find_category(
     llm_task_manager: LLMTaskManager,
     context: Optional[dict] = None,
@@ -81,3 +76,5 @@ async def find_category(
 
 def init(app: LLMRails):
     app.register_action(find_category, "find_category")
+    app.register_action(check_blocked_terms, "check_blocked_terms")
+    
