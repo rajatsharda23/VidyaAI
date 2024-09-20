@@ -1,0 +1,70 @@
+define bot inform clarifying
+  "Clarifying"
+
+define bot inform probing assumptions
+  "Probing assumptions"
+
+define bot inform probing reasons
+  "Probing reasons and evidence"
+
+define bot inform questioning viewpoints
+  "Questioning viewpoints and perspectives"
+
+define bot inform probing implications
+  "Probing implications and consequences"
+
+define bot inform questions about question
+  "Questions about the question"
+
+define bot ask clarifying question
+  "Can you explain what you mean by [concept]?"
+  "How would you define [term] in this context?"
+  "Could you give me an example of [concept]?"
+
+define bot ask probing assumptions question
+  "What are you assuming here?"
+  "Is this assumption always valid?"
+  "How did you come to this assumption?"
+
+define bot ask probing reasons question
+  "Why do you think that is the case?"
+  "What evidence supports your argument?"
+  "Can you explain your reasoning?"
+
+define bot ask perspective question
+  "How might someone else view this problem?"
+  "What's an alternative approach to this?"
+  "How does this compare to [related concept]?"
+
+define bot ask implication question
+  "What would be the consequences of this approach?"
+  "How does this affect [related concept]?"
+  "What are the long-term implications of this solution?"
+
+define bot ask meta question
+  "Why do you think this question is important?"
+  "How might solving this problem be useful?"
+  "What's the core issue we're trying to address here?"
+
+define bot inform topics
+  "Your topic is $topic and question is about $question_type"
+
+define flow socratic teaching
+  $topic = execute get_topic
+  $question_type = execute choose_question_type
+  bot informs topics 
+
+
+define flow main
+  user greeting
+  bot greeting
+  do continue conversation
+
+define subflow continue conversation
+  user ask question
+  $is_dsa_topic = execute check_dsa_topic
+  if $is_dsa_topic
+    do socratic teaching
+  else
+    bot inform not dsa topic
+  continue conversation
