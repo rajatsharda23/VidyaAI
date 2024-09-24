@@ -49,7 +49,7 @@ define bot ask meta question
 define bot inform topics
   "Your topic is $topic and question is about $question_type"
 
-define flow socratic teaching
+define subflow socratic teaching
   $topic = execute get_topic
   $question_type = execute choose_question_type
   bot informs topics 
@@ -67,4 +67,4 @@ define subflow continue conversation
     do socratic teaching
   else
     bot inform not dsa topic
-  continue conversation
+    stop

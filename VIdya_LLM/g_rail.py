@@ -49,7 +49,7 @@ async def get_api_response(prompt: str) -> str | None:
             print(info.llm_calls[1].completion)
         else:
             print('(4) \n')
-            print("Less than 2 LLM calls were made.")
+
             
         print('---------------------------- \n')
 

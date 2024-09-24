@@ -9,17 +9,17 @@ instructions:
 models:
   - type: main
     engine: vertexai
-    model: gemini-1.5-flash
+    model: gemini-1.5-flash-001
       
 
 rails:
   input:
     flows:
-      - self check input  #To check for toxicity in input(see prompts.yml for context)
+      - self check input
 
   output:
     flows:
-      - self check output # To check for toxicity in output (refer prompts.yml)
+      - self check output
       # - check blocked terms # refer blocked_terms && actions.py
 
   # This is to make only a single call to the LLM - works only when this is true
@@ -27,4 +27,3 @@ rails:
      single_call:
       enabled: true # Keep this true only, will fail if it is false :(
       fallback_to_multiple_calls: false
-    

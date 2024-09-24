@@ -3,8 +3,13 @@ define user greeting
   "Hi!"
 
 define bot greeting
-  "Hey, I'm Vidya, your teaching assistant catering to your DSA needs!"
-  
-define flow 
-    user greeting
-    bot greeting
+  "Hey, I'm Vidya, your teaching assistant for Data Structures and Algorithms! I'll guide you through problems using thought-provoking questions. What would you like to learn about today?"
+
+define bot inform not dsa topic
+  "I'm sorry, but I'm specialized in Data Structures and Algorithms. Could you ask me something related to DSA?"
+
+define flow main
+  user greeting
+  bot greeting
+
+
