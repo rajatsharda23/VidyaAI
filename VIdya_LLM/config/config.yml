@@ -16,11 +16,11 @@ rails:
   input:
     flows:
       - self check input
-
+      
   output:
     flows:
       - self check output
-      # - check blocked terms # refer blocked_terms && actions.py
+      - check blocked terms # refer blocked_terms && actions.py
 
   # This is to make only a single call to the LLM - works only when this is true
   dialog: 

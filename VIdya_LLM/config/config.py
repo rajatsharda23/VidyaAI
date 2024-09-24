@@ -1,7 +1,7 @@
 from nemoguardrails import LLMRails, RailsConfig
 from nemoguardrails.server.api import register_datastore
 from nemoguardrails.server.datastore.memory_store import MemoryStore
-from .actions.actions import find_category, check_blocked_terms
+# from .actions.actions import find_category, check_blocked_terms
 
 
 
@@ -26,7 +26,7 @@ def init(app: LLMRails):
     # This module is loaded before initializing LLMRails
     # For time being nothing is needed to be done here
     print ("Config - module is loaded before initializing LLMRails")
-    app.register_action(find_category, "find_category")
-    app.register_action(check_blocked_terms, "check_blocked_terms")
+    # app.register_action(find_category, "find_category")
+    # app.register_action(check_blocked_terms, "check_blocked_terms")
     
 

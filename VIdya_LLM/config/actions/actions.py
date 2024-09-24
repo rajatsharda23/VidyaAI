@@ -9,7 +9,7 @@ from nemoguardrails.actions.actions import ActionResult, action
 from nemoguardrails.actions.llm.utils import llm_call
 from nemoguardrails.context import llm_call_info_var
 from nemoguardrails.llm.params import llm_params
-from .socraticActions import get_topic, choose_question_type, check_dsa_topic
+# from .socraticActions import get_topic, choose_question_type, check_dsa_topic
 
 log = logging.getLogger(__name__)
 
@@ -80,9 +80,8 @@ async def find_category(
         return_value="Bad manners"
     )
 
+
 def init(app: LLMRails):
     app.register_action(find_category, "find_category")
     app.register_action(check_blocked_terms, "check_blocked_terms")
-    app.register_action(get_topic, "get_topic")
-    app.register_action(choose_question_type, "choose_question_type")
-    app.register_action(check_dsa_topic, "check_dsa_topic")
+

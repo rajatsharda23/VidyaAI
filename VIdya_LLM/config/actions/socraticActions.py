@@ -80,3 +80,9 @@ async def check_dsa_topic(context: Optional[dict] = None) -> bool:
     user_message = context.get("user_message", "").lower()
     dsa_keywords = ["algorithm", "data structure", "complexity", "big o", "array", "linked list", "stack", "queue", "tree", "graph", "sort", "search"]
     return any(keyword in user_message for keyword in dsa_keywords)
+
+
+def init(app: LLMRails):
+    app.register_action(get_topic, "get_topic")
+    app.register_action(choose_question_type, "choose_question_type")
+    app.register_action(check_dsa_topic, "check_dsa_topic")
