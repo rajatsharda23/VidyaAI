@@ -59,6 +59,7 @@ Nemo Guardrails works with Python versions 3.9 to 3.11, with the preferred/teste
    ```bash
    nemoguardrails server [--config PATH/TO/CONFIGS] [--port PORT] [--prefix PREFIX] [--disable-chat-ui] [--auto-reload] [--default-config-id DEFAULT_CONFIG_ID]
    eg-> nemoguardrails server --config=config --port=7080 --auto-reload
+   for deployement -> nemoguardrails server --config=config  --disable-chat-ui
    ```
 
 3. **Interact with the Bot**: Once the server is running, you can interact with the bot through the command line interface. Type your questions, and the bot will respond based on its training.

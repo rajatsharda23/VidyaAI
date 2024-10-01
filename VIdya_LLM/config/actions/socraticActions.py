@@ -146,9 +146,9 @@ async def give_socratic_response(
         if result:
             log.info(f"Socratic response successfully creaated!")
 
-        print('----------------------------------')
-        print(result)
-        print('----------------------------------')
+        # print('----------------------------------')
+        # print(result)
+        # print('----------------------------------')
         
         return ActionResult(return_value=result)
     
