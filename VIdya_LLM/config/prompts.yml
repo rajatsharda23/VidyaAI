@@ -54,34 +54,57 @@ prompts:
       Question: Should the message be blocked (Yes or No)?
       Answer:
       
-  - task: get_topic
+  - task: check_valid_question
     content: |
-      Your task is to realise the topic of the Data Structures and Algorithms (DSA) Question the user is interested in.
-      The question can be from a mix of multiple topics, and your job is to correctly identify if them.
-        
-        Classify the question of the user under one or more of these topics:
-        - Array
-        - Linked List
-        - Stack
-        - Queue
-        - Tree
-        - Graph
-        - Sorting
-        - Searching
-        - Dynamic Programming
-        - Recursion/Brute Force
-        - Basic Math
-            
-        User message: "{{ user_input }}"
+      Your task is to determine if the user input is a valid question or statement for Socratic teaching in the context of Data Structures and Algorithms (DSA).
 
-        Question: What category does the message fall into? Provide just the category name or "General DSA" if none of the categories fit.
-        Answer: 
+      Socratic Teaching in DSA context:
+      - Encourages learning about algorithms and data structures at all levels
+      - Guides discovery of DSA concepts, from basics to advanced topics
+      - Helps with problem-solving and algorithm design
+      - Promotes understanding of time and space complexity
 
-  - task: generate_socratic_question
+      Evaluation Criteria:
+      1. Relevance to DSA (data structures, algorithms, complexity, problem-solving)
+      2. Potential for learning (allows explanation or exploration of concepts)
+      3. Specificity (related to a DSA topic or problem, even if basic)
+      4. Practical application (includes coding problems, LeetCode-style questions)
+
+      Valid input examples:
+      - "What is an array and how does it work?"
+      - "Can you help me solve this LeetCode problem about linked lists?"
+      - "How do I implement a binary search tree?"
+      - "What's the time complexity of bubble sort?"
+      - "I'm stuck on a dynamic programming problem, can you guide me?"
+
+      Invalid input examples:
+      - "Hello, how are you?" (greeting, not DSA-related)
+      - "What's your favorite color?" (off-topic)
+      - "Tell me a joke." (unrelated to DSA)
+
+      User input: "{{ user_input }}"
+
+      Question: Is this a valid question/statement for Socratic teaching in DSA (true or false: Just give the answer as true or false, no explanantion and no formatting of the texts). Say true even if anyone of the criterias are fullfilled from the evaluation criteria?
+      Answer: 
+  
+  - task: give_socratic_response
     content: |
-      As a Socratic teacher for Data Structures and Algorithms, your task is to generate a thought-provoking question related to the given topic. The question should encourage critical thinking and lead the student to discover the answer themselves.
+      Your role is to guide the user toward discovering the answer using the Socratic method. Avoid giving the direct answer, even if requested, unless the user is on the verge of reaching it themselves. Instead, help the user reflect on their understanding, guiding them through questions that challenge assumptions and build on their knowledge.
 
-      Topic: {{ topic }}
-      Question type: {{ question_type }}
+      Structure your response by:
+      1. Analyzing the user's current understanding and where they are in the problem-solving process.
+      2. Identifying the next logical step in their thinking.
+      3. Posing thought-provoking questions that encourage them to critically engage with their own ideas.
+      
+      Sample guiding questions:
+      - "What is the core principle behind this?"
+      - "How does this relate to what you already know?"
+      - "Can you think of a different perspective to approach this?"
+      - "What assumptions are you making?"
+      - "Why do you believe this is the correct step?"
 
-      Generate a Socratic question that fits the given topic and question type:
+      User input: "{{ user_input }}"
+
+      Question: Give a response that helps the user critically think through the problem. Pose questions or hints that guide them to the next step, rather than providing a direct answer. Assess their current understanding and offer questions that encourage them to explore their assumptions, think deeply, and find the solution on their own.
+      Answer:
+

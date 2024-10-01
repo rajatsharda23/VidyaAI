@@ -47,9 +47,9 @@ async def find_category(
         llm = rails.llm
 
 
-    print('------------------------------------------------------------------------')
-    print('FIND_CATEGORY WAS CALLED')
-    print('------------------------------------------------------------------------')
+    # print('------------------------------------------------------------------------')
+    # print('FIND_CATEGORY WAS CALLED')
+    # print('------------------------------------------------------------------------')
 
     user_input = context.get("user_message")
     log.info(f"User input received: {user_input}")
@@ -67,9 +67,9 @@ async def find_category(
         check = check.lower().strip() if check else "error fetching category"
         log.info(f"Category determined: {check}")
 
-        print('------------------------------------------------------------------------')
-        print(f'category found----> ', check)
-        print('------------------------------------------------------------------------')
+        # print('------------------------------------------------------------------------')
+        # print(f'category found----> ', check)
+        # print('------------------------------------------------------------------------')
         
 
         return ActionResult(
@@ -77,7 +77,7 @@ async def find_category(
         )
 
     return ActionResult(
-        return_value="Bad manners"
+        return_value="something went wrong...."
     )
 
 

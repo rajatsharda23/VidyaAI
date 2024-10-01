@@ -46,25 +46,27 @@ define bot ask meta question
   "How might solving this problem be useful?"
   "What's the core issue we're trying to address here?"
 
-define bot inform topics
-  "Your topic is $topic and question is about $question_type"
+define bot inform valid question
+  "Your question's type is $isValidQuestion"
 
-define subflow socratic teaching
-  $topic = execute get_topic
-  $question_type = execute choose_question_type
-  bot informs topics 
+define bot gives socratic responsse
+  "$response"
 
-
-define flow main
-  user greeting
-  bot greeting
-  do continue conversation
-
-define subflow continue conversation
-  user ask question
-  $is_dsa_topic = execute check_dsa_topic
-  if $is_dsa_topic
-    do socratic teaching
+define subflow bot teaching
+  #Bot will start Socratic Teaching, not giving out the answerm but push to student to get the correct answer
+  $response = execute give_socratic_response
+  
+  if $response
+    bot gives socratic responsse
   else
-    bot inform not dsa topic
+    bot informs clarifying
     stop
+
+define flow check valid question
+  #Checking if the user message is a question valid for socratic teaching
+  $isValidQuestion = execute check_valid_question
+
+  if $isValidQuestion
+    # Now start socaratic teaching
+    do bot teaching
+

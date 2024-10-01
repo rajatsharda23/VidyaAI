@@ -58,6 +58,7 @@ Nemo Guardrails works with Python versions 3.9 to 3.11, with the preferred/teste
    To launch the Nemo Guardrails server, use:
    ```bash
    nemoguardrails server [--config PATH/TO/CONFIGS] [--port PORT] [--prefix PREFIX] [--disable-chat-ui] [--auto-reload] [--default-config-id DEFAULT_CONFIG_ID]
+   eg-> nemoguardrails server --config=config --port=7080 --auto-reload
    ```
 
 3. **Interact with the Bot**: Once the server is running, you can interact with the bot through the command line interface. Type your questions, and the bot will respond based on its training.
@@ -69,3 +70,18 @@ Nemo Guardrails works with Python versions 3.9 to 3.11, with the preferred/teste
 For more detailed information on how to customize and extend the functionality of VidyaAI, refer to the official [NVIDIA NeMo Guardrails Documentation](https://docs.nvidia.com/nemo/guardrails/index.html).
 
 Feel free to contribute to the project by submitting issues or pull requests on the GitHub repository.
+
+## MakeShift Clipboard ->
+define flow main
+  user greeting
+  bot greeting
+  do continue conversation
+
+define subflow continue conversation
+  user ask question
+  $is_dsa_topic = execute check_dsa_topic
+  if $is_dsa_topic
+    do socratic teaching
+  else
+    bot inform not dsa topic
+    stop

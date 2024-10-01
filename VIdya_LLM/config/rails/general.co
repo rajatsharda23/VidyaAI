@@ -8,8 +8,4 @@ define bot greeting
 define bot inform not dsa topic
   "I'm sorry, but I'm specialized in Data Structures and Algorithms. Could you ask me something related to DSA?"
 
-define flow main
-  user greeting
-  bot greeting
-
 

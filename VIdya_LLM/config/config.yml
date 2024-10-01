@@ -16,6 +16,8 @@ rails:
   input:
     flows:
       - self check input
+      - check valid question
+      # - give socratic response
       
   output:
     flows:
