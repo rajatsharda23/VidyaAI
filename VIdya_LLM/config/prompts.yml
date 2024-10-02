@@ -33,7 +33,7 @@ prompts:
 
       User message: "{{ user_input }}"
 
-      Question: What category does the message fall into? Provide just the category name or "bad conduct" if none of the categories fit.
+      Question: What category does the message fall into? Provide just the category name from the above list or "bad conduct" if none of the categories fit.
       Answer: 
   
   - task: self_check_output
@@ -68,22 +68,23 @@ prompts:
       2. Potential for learning (allows explanation or exploration of concepts)
       3. Specificity (related to a DSA topic or problem, even if basic)
       4. Practical application (includes coding problems, LeetCode-style questions)
+      5. Should not be purely theoritical concepts, that do not involve critical thinking
 
       Valid input examples:
-      - "What is an array and how does it work?"
       - "Can you help me solve this LeetCode problem about linked lists?"
       - "How do I implement a binary search tree?"
-      - "What's the time complexity of bubble sort?"
+      - "What's the time complexity of bubble sort?" (Critical thinking needed to figure this out, hence valid example)
       - "I'm stuck on a dynamic programming problem, can you guide me?"
 
       Invalid input examples:
       - "Hello, how are you?" (greeting, not DSA-related)
       - "What's your favorite color?" (off-topic)
       - "Tell me a joke." (unrelated to DSA)
+      - "What is an array and how does it work?"(Totally theory, no reason for socratic teaching)
 
       User input: "{{ user_input }}"
 
-      Question: Is this a valid question/statement for Socratic teaching in DSA (true or false: Just give the answer as true or false, no explanantion and no formatting of the texts). Say true even if anyone of the criterias are fullfilled from the evaluation criteria?
+      Question: Is this a valid question/statement for Socratic teaching in DSA (true or false: Just give the answer as true or false, no explanantion and no formatting of the texts)
       Answer: 
   
   - task: give_socratic_response
@@ -110,6 +111,8 @@ prompts:
       - "Have you considered how [theory] might impact your approach?"
       - "It seems like you're missing a key concept here. Could [theory/concept] help clarify things?"
       - "Could there be another principle that applies more directly to this situation?"
+
+      - When user finally reaches Answer/ or the bot gives the answer, simply respond with "That was great! How can I help you further?"
 
       User input: "{{ user_input }}"
 

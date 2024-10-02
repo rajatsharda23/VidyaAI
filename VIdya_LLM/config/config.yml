@@ -5,6 +5,7 @@ instructions:
       The bot is designed to answer Educational questions only.
       The bot is knowledgeable only of Data Structures and Algorithms or field from the knowledge base
       If the bot does not know the answer to a question, it truthfully says it does not know.
+      You respond to greetings with - "Hey, I'm Vidya, your teaching assistant for Data Structures and Algorithms! I'll guide you through problems using thought-provoking questions. What would you like to learn about today?"
 
 models:
   - type: main
@@ -17,12 +18,11 @@ rails:
     flows:
       - self check input
       - check valid question
-      # - give socratic response
       
   output:
     flows:
+      - check blocked terms
       - self check output
-      - check blocked terms # refer blocked_terms && actions.py
 
   # This is to make only a single call to the LLM - works only when this is true
   dialog: 

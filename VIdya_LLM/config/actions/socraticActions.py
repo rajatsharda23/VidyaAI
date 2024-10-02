@@ -102,9 +102,6 @@ async def check_valid_question(
             result = await llm_call(llm, prompt, stop=stop)
         new_result = result.lower()
         is_valid = new_result.strip() == "true"
-        # print('----------------------------------')
-        # print(is_valid)
-        # print('----------------------------------')
 
         log.info(f"Is valid question for Socratic teaching and DSA-related: {is_valid}")
 
@@ -145,10 +142,6 @@ async def give_socratic_response(
 
         if result:
             log.info(f"Socratic response successfully creaated!")
-
-        # print('----------------------------------')
-        # print(result)
-        # print('----------------------------------')
         
         return ActionResult(return_value=result)
     
